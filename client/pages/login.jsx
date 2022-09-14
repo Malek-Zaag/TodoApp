@@ -15,9 +15,7 @@ export default function Login() {
             name="password"
             className="shadow-lg rounded-lg bg-gray-100 py-1 my-1"
           ></input>
-          <button className="text-center text-2xl bg-gray-100 rounded-lg my-5">
-            login
-          </button>
+          <button className="bg-gray-100 my-4 py-1 rounded-lg">Login</button>
           <div>
             <span>
               Create a new account?{" "}
