@@ -1,20 +1,40 @@
 export default function Signup() {
   return (
-    <>
-      <h1 className="text-3xl font-bold underline">hello</h1>
-      <div>
-        <form className="text-3xl font-bold underline">
-          <label for="firstname"></label>
-          <input name="firstname"></input>
-          <label for="lastname"></label>
-          <input name="lastname"></input>
-          <label for="email"></label>
-          <input name="email"></input>
-          <label for="password"></label>
-          <input name="password"></input>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="px-8 py-6 mx-4 mt-4 text-left bg-white shadow-lg md:w-1/3 lg:w-1/3 sm:w-1/3 rounded-md">
+        <h3 className="text-2xl text-center mb-5">Join us</h3>
+        <form className="flex flex-col">
+          <label for="firstname">Firstname</label>
+          <input
+            name="firstname"
+            className="shadow-lg rounded-lg bg-gray-100 py-1 my-1"
+          ></input>
+          <label for="lastname">Lastname</label>
+          <input
+            name="lastname"
+            className="shadow-lg rounded-lg bg-gray-100 py-1 my-1"
+          ></input>
+          <label for="email">Email</label>
+          <input
+            name="email"
+            className="shadow-lg rounded-lg bg-gray-100 py-1 my-1"
+          ></input>
+          <label for="password">Password</label>
+          <input
+            name="password"
+            className="shadow-lg rounded-lg bg-gray-100 py-1 my-1"
+          ></input>
+          <button className="bg-gray-100 my-4 py-1 rounded-lg">Create</button>
+          <div>
+            <span>
+              Log in to your account?{" "}
+              <a className="text-red-500" href="/login">
+                LogIN
+              </a>
+            </span>
+          </div>
         </form>
       </div>
-      <footer>footer test</footer>
-    </>
+    </div>
   );
 }
