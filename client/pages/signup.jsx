@@ -1,7 +1,8 @@
+import Link from "next/link";
 export default function Signup() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="px-8 py-6 mx-4 mt-4 text-left bg-white shadow-lg md:w-1/3 lg:w-1/3 sm:w-1/3 rounded-md">
+      <div className="px-8 py-6 mx-4 mt-4 text-left bg-white shadow-lg md:w-1/3 lg:w-1/3 sm:w-1/3 rounded-lg">
         <h3 className="text-2xl text-center mb-5">Join us</h3>
         <form className="flex flex-col">
           <label for="firstname">Firstname</label>
@@ -28,9 +29,9 @@ export default function Signup() {
           <div>
             <span>
               Log in to your account?{" "}
-              <a className="text-red-500" href="/login">
-                LogIN
-              </a>
+              <span className="text-red-500 font-bold">
+                <Link href="/login">LogIn</Link>
+              </span>
             </span>
           </div>
         </form>
