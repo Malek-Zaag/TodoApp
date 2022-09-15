@@ -1,6 +1,7 @@
 const express = require("express")
 const app = express()
 const cors = require("cors")
+require('dotenv').config();
 
 const corsOptions = {
   origin: true,
@@ -13,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 
-app.listen(port, () => {
+app.listen(process.env.PORT, () => {
   console.log(`Server running on http://localhost:${process.env.PORT}`);
 });
 
@@ -21,3 +22,5 @@ app.listen(port, () => {
 app.get("/", (req, res) => {
   res.send("hello malek from backend")
 })
+
+
