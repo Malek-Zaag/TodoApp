@@ -24,3 +24,13 @@ const userSchema = new mongoose.Schema({
   },
 
 })
+
+userSchema.pre('save', async function (next) {
+  this.password = md5(this.password)
+  next();
+})
+
+
+
+const User = mongoose.model('user', userSchema)
+module.exports.User
