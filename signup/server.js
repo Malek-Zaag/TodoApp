@@ -1,7 +1,10 @@
-const express = require("express")
-const app = express()
-const cors = require("cors")
-require('dotenv').config();
+const express = require("express");
+const app = express();
+const cors = require("cors");
+const bp = require("body-parser");
+require("./config");
+
+require("dotenv").config();
 
 const corsOptions = {
   origin: true,
@@ -9,18 +12,13 @@ const corsOptions = {
   optionSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-
+app.use(bp.json());
+app.use(bp.urlencoded({ extended: true }));
 
 app.listen(process.env.PORT, () => {
   console.log(`Server running on http://localhost:${process.env.PORT}`);
 });
-
-
+require("./routes")(app);
 app.get("/", (req, res) => {
-  res.send("hello malek from backend")
-})
-
-
+  res.send("hello malek from backend");
+});
