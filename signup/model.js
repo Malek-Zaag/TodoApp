@@ -28,5 +28,18 @@ userSchema.pre("save", async function (next) {
   this.password = md5(this.password);
   next();
 });
+userSchema.statics.login = async function (email, password) {
+  const user = await this.findOne({ email });
+  if (user) {
+    var auth;
+    if (md5(password) === user.password) auth = true;
+    else auth = false;
+    if (auth) {
+      return user;
+    }
+    throw Error("Incorrect password");
+  }
+  throw Error("We cannot find this email");
+};
 
 module.exports.User = mongoose.model("User", userSchema);
