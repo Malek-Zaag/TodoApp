@@ -24,5 +24,6 @@ module.exports.loginUser = async (req, res) => {
 
 module.exports.logoutUser = (req, res) => {
   res.cookie("jwt", "", { maxAge: 1 });
-  res.redirect("/");
+  res.status(200);
+  res.send("logout success  ");
 };

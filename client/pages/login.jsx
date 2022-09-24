@@ -1,24 +1,35 @@
 import Link from "next/link";
 import axios from "axios";
 import { useRef } from "react";
+import { useRouter } from "next/router";
+
 export default function Login() {
+  const router = useRouter();
   const emailRef = useRef();
   const passwordRef = useRef();
   const submitForm = (e) => {
-    e.preventDefault();
-    axios
-      .post(`${process.env.NEXT_PUBLIC_LOGIN_URL}/api/login`, {
+    const options = {
+      url: `${process.env.NEXT_PUBLIC_LOGIN_URL}/api/login`,
+      method: "POST",
+      mode: "same-origin",
+      redirect: "follow",
+      withCredentials: true,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json;charset=UTF-8",
+      },
+      data: {
         email: emailRef.current.value,
         password: passwordRef.current.value,
-      })
+      },
+    };
+    e.preventDefault();
+    axios(options)
       .then((response) => {
         console.log(process.env.NEXT_PUBLIC_LOGIN_URL);
         console.log(response);
         if (response.status == 200) {
-          window.location.href = "/";
-          if (process.browser) {
-            console.log(document.cookie);
-          }
+          router.push("/todos");
         }
       })
       .catch((error) => {
