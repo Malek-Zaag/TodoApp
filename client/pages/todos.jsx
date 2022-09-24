@@ -1,6 +1,31 @@
+import axios from "axios";
+import { useRouter } from "next/router";
+import { getCookie } from "cookies-next";
+
 export default function Todos() {
+  const router = useRouter();
   const logout = () => {
-    window.location = "/login";
+    const options = {
+      url: `${process.env.NEXT_PUBLIC_LOGIN_URL}/api/logout`,
+      method: "get",
+      withCredentials: true,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json;charset=UTF-8",
+      },
+    };
+    axios(options)
+      .then((response) => {
+        console.log(process.env.NEXT_PUBLIC_LOGIN_URL);
+        console.log(response);
+        router.push("/login");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    if (!getCookie("jwt")) {
+      router.push("/login");
+    } // => 'value'
   };
   return (
     <div className="bg-gray-100 min-h-screen">
