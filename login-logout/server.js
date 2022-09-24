@@ -19,5 +19,5 @@ app.listen(process.env.PORT, () => {
 });
 require("./routes")(app);
 app.get("/", (req, res) => {
-  res.send("hello malek from backend2");
+  res.send("hello malek from backend 2");
 });

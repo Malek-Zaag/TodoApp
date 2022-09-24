@@ -110,3 +110,4 @@ idea/
 
 #env file
 .env
+.env.local
