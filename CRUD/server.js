@@ -37,8 +37,12 @@ app.get("/", (req, res) => {
 
 app.get("/api/task/:id", (req, res) => {
   const id = req.params.id;
-  const tasks = Task.findById(id);
-  res.status(200).send(tasks);
+  Task.find({ id: id })
+    .then((tasks) => {
+      console.log(tasks);
+      res.json(tasks);
+    })
+    .catch((err) => res.json(err));
 });
 
 //routes

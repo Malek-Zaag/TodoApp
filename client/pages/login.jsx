@@ -28,6 +28,8 @@ export default function Login() {
       .then((response) => {
         console.log(process.env.NEXT_PUBLIC_LOGIN_URL);
         console.log(response);
+        localStorage.setItem("id", response.data._id);
+        console.log(response.data._id);
         if (response.status == 200) {
           router.push("/todos");
         }

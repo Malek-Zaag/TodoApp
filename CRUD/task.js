@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const taskSchema = new mongoose.Schema({
   id: {
     type: String,
-    unique: true,
   },
   task_name: {
     type: String,
@@ -11,7 +10,6 @@ const taskSchema = new mongoose.Schema({
   },
   time: {
     type: String,
-    unique: true,
   },
 });
 
