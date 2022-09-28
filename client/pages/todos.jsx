@@ -43,6 +43,14 @@ export default function Todos() {
         </span>
         <h1 className="text-2xl">My todos</h1>
       </div>
+      <div>
+        <label>Task : </label>
+        <input type="text"></input>
+        <label>Time : </label>
+        <input type="text"></input>
+        <button className="p-4">add todo</button>
+      </div>
+
       <div className="my-6 mx-6 py-6">
         <ul>
           <li className="px-3 py-3 my-3 flex rounded-xl bg-gray-200 shadow-xl md:w-3/4 lg:w-1/2 sm:w-3/4 justify-between ">

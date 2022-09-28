@@ -3,15 +3,9 @@ const app = express();
 const cors = require("cors");
 const bp = require("body-parser");
 const mongoose = require("mongoose");
-require("./config");
 require("dotenv").config();
-
-const myController = require("./controller");
-
-module.exports = function (app) {
-  app.post("/api/login", myController.loginUser);
-  app.get("/api/logout", myController.logoutUser);
-};
+const { User } = require("./model");
+const { Task } = require("./task");
 
 const dbURI = process.env.DB_URI;
 mongoose
@@ -37,7 +31,28 @@ app.use(bp.urlencoded({ extended: true }));
 app.listen(process.env.PORT, () => {
   console.log(`Server running on http://localhost:${process.env.PORT}`);
 });
-require("./routes")(app);
 app.get("/", (req, res) => {
   res.send("hello malek from crud");
+});
+
+app.get("/api/task/:id", (req, res) => {
+  const id = req.params.id;
+  const tasks = Task.findById(id);
+  res.status(200).send(tasks);
+});
+
+//routes
+
+app.post("/api/task/:id", (req, res) => {
+  const id = req.params.id;
+  Task.create({
+    id,
+    task_name: req.body.name,
+    time: req.body.time,
+  })
+    .then((response) => {
+      res.send("Task added successfully to database");
+      res.status(200);
+    })
+    .catch((err) => console.log(err));
 });

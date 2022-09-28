@@ -22,6 +22,10 @@ const userSchema = new mongoose.Schema({
     required: [true, "please enter a password"],
     minlength: [6, "minimum password length is 6 "],
   },
+  tasks_id: {
+    type: String,
+    unique: true,
+  },
 });
 
 userSchema.pre("save", async function (next) {
