@@ -16,8 +16,6 @@ export default function Signup() {
         password: passwordRef.current.value,
       })
       .then((response) => {
-        console.log(process.env.NEXT_PUBLIC_SIGNIN_URL);
-        console.log(response);
         if (response.status == 200) {
           window.location.href = "/login";
         }

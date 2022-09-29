@@ -23,8 +23,6 @@ export default function Todos() {
     };
     axios(options)
       .then((response) => {
-        console.log(process.env.NEXT_PUBLIC_LOGIN_URL);
-        console.log(response);
         router.push("/login");
       })
       .catch((error) => {
@@ -54,10 +52,7 @@ export default function Todos() {
       },
     };
     axios(options)
-      .then((response) => {
-        console.log(process.env.NEXT_PUBLIC_TASK_URL);
-        console.log(response);
-      })
+      .then((response) => {})
       .catch((error) => {
         console.log(error);
       });
@@ -76,10 +71,7 @@ export default function Todos() {
       },
     };
     axios(options)
-      .then((response) => {
-        console.log(process.env.NEXT_PUBLIC_TASK_URL);
-        console.log(response);
-      })
+      .then((response) => {})
       .catch((error) => {
         console.log(error);
       });
@@ -92,7 +84,6 @@ export default function Todos() {
         )}`
       )
       .then((response) => {
-        console.log(response);
         setTasks(response.data);
       })
       .catch((err) => console.log(err));
