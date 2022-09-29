@@ -23,8 +23,6 @@ export default function Todos() {
     };
     axios(options)
       .then((response) => {
-        console.log(process.env.NEXT_PUBLIC_LOGIN_URL);
-        console.log(response);
         router.push("/login");
       })
       .catch((error) => {
@@ -35,7 +33,9 @@ export default function Todos() {
     } // => 'value'
   };
   const add = () => {
-    setState(true);
+    if (state === true) {
+      setState(false);
+    } else setState(true);
     const options = {
       url: `${process.env.NEXT_PUBLIC_TASK_URL}/api/task/${localStorage.getItem(
         "id"
@@ -52,10 +52,26 @@ export default function Todos() {
       },
     };
     axios(options)
-      .then((response) => {
-        console.log(process.env.NEXT_PUBLIC_TASK_URL);
-        console.log(response);
-      })
+      .then((response) => {})
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const delete_task = (id) => {
+    if (state === true) {
+      setState(false);
+    } else setState(true);
+    const options = {
+      url: `${process.env.NEXT_PUBLIC_TASK_URL}/api/task/${id}`,
+      method: "DELETE",
+      withCredentials: true,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json;charset=UTF-8",
+      },
+    };
+    axios(options)
+      .then((response) => {})
       .catch((error) => {
         console.log(error);
       });
@@ -68,7 +84,6 @@ export default function Todos() {
         )}`
       )
       .then((response) => {
-        console.log(response);
         setTasks(response.data);
       })
       .catch((err) => console.log(err));
@@ -108,19 +123,11 @@ export default function Todos() {
                 className="px-3 py-3 my-3 flex rounded-xl bg-gray-200 shadow-xl md:w-3/4 lg:w-1/2 sm:w-3/4 justify-between "
               >
                 <div>
-                  <span className="text-sm">{task.task_name} </span>
+                  <span className="text-md">{task.task_name} </span>
                   <span className="text-lg ml-3">{task.time}</span>
                 </div>
                 <div className="flex">
-                  <button>
-                    {" "}
-                    <img
-                      height={24}
-                      width={24}
-                      src="https://img.icons8.com/emoji/48/000000/pencil-emoji.png"
-                    />
-                  </button>
-                  <button>
+                  <button onClick={() => delete_task(task._id)}>
                     <img
                       height={24}
                       width={24}
