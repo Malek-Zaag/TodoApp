@@ -1,0 +1,8 @@
+FROM node:16
+RUN mkdir  /home/my_app
+WORKDIR /home/my_app
+COPY . .
+RUN npm install
+RUN npm run build
+EXPOSE 3000
+RUN npm run start
