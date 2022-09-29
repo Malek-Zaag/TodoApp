@@ -1,0 +1,18 @@
+version: "3"
+services:
+  front:
+    image: front
+    ports:
+      - 3000:3000
+  crud:
+    image: crud
+    ports:
+      - 3001:3001
+  signup:
+    image: signup
+    ports:
+      - 3002:3002
+  login:
+    image: login
+    ports:
+      - 3003:3003
