@@ -31,6 +31,8 @@ app.use(bp.urlencoded({ extended: true }));
 app.listen(process.env.PORT, () => {
   console.log(`Server running on http://localhost:${process.env.PORT}`);
 });
+
+//routes
 app.get("/", (req, res) => {
   res.send("hello malek from crud");
 });
@@ -45,8 +47,6 @@ app.get("/api/task/:id", (req, res) => {
     .catch((err) => res.json(err));
 });
 
-//routes
-
 app.post("/api/task/:id", (req, res) => {
   const id = req.params.id;
   Task.create({
@@ -59,4 +59,14 @@ app.post("/api/task/:id", (req, res) => {
       res.status(200);
     })
     .catch((err) => console.log(err));
+});
+
+app.delete("/api/task/:id", (req, res) => {
+  const id = req.params.id;
+  Task.findOneAndDelete({ _id: id })
+    .then((resposne) => res.status(200).send("successfully deleted the task"))
+    .catch((err) => {
+      console.log(err);
+      res.status(400).send(errr);
+    });
 });
