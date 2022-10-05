@@ -107,6 +107,8 @@ dist
 Diagrams/
 .idea/
 idea/
+md/
+Kubernetes/
 
 #env file
 .env

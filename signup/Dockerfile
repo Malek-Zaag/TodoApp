@@ -1,8 +1,7 @@
-FROM node:16
-ENV key=value
-RUN mkdir /home/my_app
+FROM node:alpine 
 WORKDIR /home/my_app
 COPY . .
 RUN npm install
 EXPOSE 3002
 CMD [ "npm","run","nodemon" ]
+
