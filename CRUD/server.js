@@ -67,6 +67,6 @@ app.delete("/api/task/:id", (req, res) => {
     .then((resposne) => res.status(200).send("successfully deleted the task"))
     .catch((err) => {
       console.log(err);
-      res.status(400).send(errr);
+      res.status(400).send(err);
     });
 });
