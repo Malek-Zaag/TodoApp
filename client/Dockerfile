@@ -1,8 +1,22 @@
-FROM node:alpine 
-RUN mkdir  /home/my_app
-WORKDIR /home/my_app
-COPY . .
-RUN npm install
-RUN npm run build
+FROM node:alpine
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# Expose port for service
 EXPOSE 3000
-CMD ["npm","run","start"]
+
+# Install and configure `serve`.
+RUN npm install -g serve
+
+# Copy source code to image
+COPY . .
+
+# Install dependencies
+RUN npm install
+
+#permission
+RUN chmod 777 run
+
+# Build app and start server from script
+CMD ["/usr/src/app/run"]
