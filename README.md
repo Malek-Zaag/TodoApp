@@ -17,7 +17,7 @@ and this is the entity-relationship Diagram :
 
 ## Docker
 
-<img  width="250" height="250" src="https://i0.wp.com/ledatascientist.com/wp-content/uploads/2020/01/docker_logo.png?fit=601%2C431&ssl=1" />
+<img  width="300" height="250" src="https://i0.wp.com/ledatascientist.com/wp-content/uploads/2020/01/docker_logo.png?fit=601%2C431&ssl=1" />
 
 
 Docker is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly. With Docker, you can manage your infrastructure in the same ways you manage your applications. By taking advantage of Docker’s methodologies for shipping, testing, and deploying code quickly, you can significantly reduce the delay between writing code and running it in production.
