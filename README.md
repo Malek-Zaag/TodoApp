@@ -2,6 +2,9 @@
 
 This app is built with NextJS and ExpressJS as a backend library. I used MongoDB as a database for my users and their todos. This app allows users to authenticate, register and create their todos that will be saved to the database.
 
+
+## Architecture
+![](https://i.imgur.com/eE8BBPM.png)
 ## UML diagrams
 
 This is the Usecase Diagram of the app :
