@@ -3,36 +3,19 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
   "timezone": "America/Toronto",
-  "schedule": ["before 6am every weekday"],
   "prConcurrentLimit": 10,
-  "labels": ["dependencies"],
+  "platformAutomerge": true,
   "packageRules": [
     {
-      "description": "Automatically merge patch updates",
-      "matchUpdateTypes": ["patch"],
+      "description": "Automerge stable patch and minor updates",
+      "matchUpdateTypes": ["patch", "minor"],
       "matchCurrentVersion": "!/^0/",
       "automerge": true,
-      "automergeType": "pr",
-      "platformAutomerge": true
+      "automergeType": "pr"
     },
     {
-      "description": "Automatically merge minor updates",
-      "matchUpdateTypes": ["minor"],
-      "matchCurrentVersion": "!/^0/",
-      "automerge": true,
-      "automergeType": "pr",
-      "platformAutomerge": true
-    },
-    {
-      "description": "Require manual review for infrastructure changes",
-      "matchManagers": [
-        "terraform",
-        "terraform-version",
-        "helm-values",
-        "helm-requirements",
-        "dockerfile",
-        "docker-compose"
-      ],
+      "description": "Keep major updates manual",
+      "matchUpdateTypes": ["major"],
       "automerge": false
     }
   ]
