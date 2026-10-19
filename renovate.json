@@ -16,7 +16,7 @@
     {
       "description": "Keep major updates manual",
       "matchUpdateTypes": ["major"],
-      "automerge": false
+      "automerge": true
     }
   ]
 }
